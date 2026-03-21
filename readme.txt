@@ -1,9 +1,9 @@
 === PostmarkApp Email Integrator ===
 Contributors: gagan0123, guillaumemolter, livearoha
 Tags: postmark, email, smtp, notifications, wp_mail, wildbit
-Requires at least: 3.5
-Tested up to: 4.0.1
-Stable tag: 2.4
+Requires at least: 5.0
+Tested up to: 6.7
+Stable tag: 2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,6 +68,21 @@ Sign up for your free Postmark account at http://postmarkapp.com and get started
 
 
 == Changelog ==
+
+= v2.5 =
+
+* Security: Fixed Stored Cross-Site Scripting (XSS) vulnerability in plugin settings (CVE-2026-1043)
+* Security: Added output escaping with esc_attr() on all form field values
+* Security: Added input sanitization with sanitize_text_field() and sanitize_email()
+* Security: Added nonce verification for settings form and AJAX requests
+* Security: Added capability checks for form processing and AJAX handlers
+* Security: Moved inline JavaScript to external file with proper enqueuing
+* Security: Changed API endpoint from HTTP to HTTPS
+* Improvement: Added text domain for internationalization support
+* Improvement: Replaced extract() usage per WordPress coding standards
+* Bug fix: Removed erroneous recursive wp_mail() call in error handling
+* Bug fix: Used wp_json_encode() instead of json_encode()
+* Bug fix: Used wp_die() instead of die() in AJAX handlers
 
 = v2.4 =
 
