@@ -2,7 +2,7 @@
 Contributors: gagan0123, guillaumemolter, livearoha
 Tags: postmark, email, smtp, notifications, wp_mail, wildbit
 Requires at least: 5.0
-Tested up to: 6.7
+Tested up to: 6.9
 Stable tag: 2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -39,6 +39,8 @@ Roadmap:
 To know more about PostMarkApp, please visit this link: http://postmarkapp.com
 
 To get help about PostMarkApp, please visit this link: http://support.postmarkapp.com/
+
+To contribute to this plugin, visit the GitHub repository: https://github.com/gagan0123/postmarkapp-email-integrator
 
 == Installation ==
 
@@ -83,6 +85,9 @@ Sign up for your free Postmark account at http://postmarkapp.com and get started
 * Bug fix: Removed erroneous recursive wp_mail() call in error handling
 * Bug fix: Used wp_json_encode() instead of json_encode()
 * Bug fix: Used wp_die() instead of die() in AJAX handlers
+* Dev: Added PHPCS configuration for WordPress coding standards
+* Dev: Added Lando configuration for local development
+* Dev: Added build script for WordPress.org distribution
 
 = v2.4 =
 
