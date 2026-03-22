@@ -7,6 +7,7 @@ A WordPress plugin that overrides `wp_mail()` to send emails through the Postmar
 - **Slug**: `postmarkapp-email-integrator`
 - **Text Domain**: `postmarkapp-email-integrator`
 - **Minimum WordPress**: 5.0
+- **Versioning**: [Semantic Versioning](https://semver.org/) (MAJOR.MINOR.PATCH)
 - **License**: GPLv2 or later
 
 ## File Structure
@@ -89,7 +90,14 @@ All admin operations require:
 
 ## Deployment
 
-The `deploy.sh` script handles releases:
+The version must be updated in three places and kept in sync:
+- `postmarkapp.php` — plugin header (`Version:`) and `wp_enqueue_script` call
+- `readme.txt` — `Stable tag:` field
+- `README.md` — `Stable tag:` field
+
+`bin/build.sh` creates a `dist/postmarkapp-email-integrator/` directory containing only the files needed for WordPress.org (plugin PHP, JS, readme.txt, index.php).
+
+`bin/deploy.sh` handles releases to WordPress.org SVN:
 1. Verifies version match between `readme.txt` and `postmarkapp.php`
 2. Generates `README.md` from `readme.txt`
 3. Commits, tags, and pushes to git
