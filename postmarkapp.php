@@ -84,8 +84,8 @@ function pma_admin_enqueue_scripts( $hook_suffix ) {
 		'pma-admin-js',
 		'pmaAdmin',
 		array(
-			'ajaxUrl'   => admin_url( 'admin-ajax.php' ),
-			'testNonce' => wp_create_nonce( 'pma_test_email' ),
+			'ajaxUrl'     => admin_url( 'admin-ajax.php' ),
+			'testNonce'   => wp_create_nonce( 'pma_test_email' ),
 			'importNonce' => wp_create_nonce( 'pma_import_settings' ),
 		)
 	);
@@ -136,7 +136,9 @@ function pma_admin_options() {
 
 		<?php if ( ! empty( $msg_updated ) ) : ?>
 			<div class="updated"><p><?php echo esc_html( $msg_updated ); ?></p></div>
-		<?php endif; ?>
+			<?php
+	endif;
+		?>
 
 		<div id="icon-tools" class="icon32"></div>
 		<h2><?php esc_html_e( 'Postmarkapp Settings', 'postmarkapp-email-integrator' ); ?></h2>
@@ -145,7 +147,7 @@ function pma_admin_options() {
 		<p>
 			<?php
 			printf(
-				/* translators: %s: Postmark sign up link */
+			/* translators: %s: Postmark sign up link */
 				esc_html__( 'If you don\'t already have a free Postmark account, %s. Every account comes with thousands of free sends.', 'postmarkapp-email-integrator' ),
 				'<a href="https://postmarkapp.com/sign_up">' . esc_html__( 'you can get one in minutes', 'postmarkapp-email-integrator' ) . '</a>'
 			);
@@ -165,23 +167,27 @@ function pma_admin_options() {
 					</tr>
 					<tr>
 						<th><label for="pma_api_key"><?php esc_html_e( 'Postmark API Key', 'postmarkapp-email-integrator' ); ?></label></th>
-						<td><input name="pma_api_key" id="pma_api_key" type="text" value="<?php echo esc_attr( get_option( 'postmarkapp_api_key' ) ); ?>" class="regular-text"/> <br/><span class="description"><?php
-							printf(
-								/* translators: %s: Link to create a Postmark server */
-								esc_html__( 'Your API key is available in the credentials screen of your Postmark server. %s.', 'postmarkapp-email-integrator' ),
-								'<a href="https://postmarkapp.com/servers/">' . esc_html__( 'Create a new server in Postmark', 'postmarkapp-email-integrator' ) . '</a>'
-							);
-						?></span></td>
+						<td><input name="pma_api_key" id="pma_api_key" type="text" value="<?php echo esc_attr( get_option( 'postmarkapp_api_key' ) ); ?>" class="regular-text"/> <br/><span class="description">
+						<?php
+						printf(
+						/* translators: %s: Link to create a Postmark server */
+							esc_html__( 'Your API key is available in the credentials screen of your Postmark server. %s.', 'postmarkapp-email-integrator' ),
+							'<a href="https://postmarkapp.com/servers/">' . esc_html__( 'Create a new server in Postmark', 'postmarkapp-email-integrator' ) . '</a>'
+						);
+						?>
+																							</span></td>
 					</tr>
 					<tr>
 						<th><label for="pma_sender_address"><?php esc_html_e( 'Sender Email Address', 'postmarkapp-email-integrator' ); ?></label></th>
-						<td><input name="pma_sender_address" id="pma_sender_address" type="email" value="<?php echo esc_attr( get_option( 'postmarkapp_sender_address' ) ); ?>" class="regular-text"/> <br/><span class="description"><?php
-							printf(
-								/* translators: %s: Link to set up sender signatures */
-								esc_html__( 'This email needs to be one of your verified sender signatures. It will appear as the "from" email on all outbound messages. %s.', 'postmarkapp-email-integrator' ),
-								'<a href="https://postmarkapp.com/signatures">' . esc_html__( 'Set one up in Postmark', 'postmarkapp-email-integrator' ) . '</a>'
-							);
-						?></span></td>
+						<td><input name="pma_sender_address" id="pma_sender_address" type="email" value="<?php echo esc_attr( get_option( 'postmarkapp_sender_address' ) ); ?>" class="regular-text"/> <br/><span class="description">
+						<?php
+						printf(
+						/* translators: %s: Link to set up sender signatures */
+							esc_html__( 'This email needs to be one of your verified sender signatures. It will appear as the "from" email on all outbound messages. %s.', 'postmarkapp-email-integrator' ),
+							'<a href="https://postmarkapp.com/signatures">' . esc_html__( 'Set one up in Postmark', 'postmarkapp-email-integrator' ) . '</a>'
+						);
+						?>
+																											</span></td>
 					</tr>
 					<tr>
 						<th><label for="pma_forcehtml"><?php esc_html_e( 'Force HTML', 'postmarkapp-email-integrator' ); ?></label></th>
@@ -333,8 +339,8 @@ function pma_parse_headers( $headers ) {
 			$headers = explode( "\n", $headers );
 		}
 	}
-	$recognized_headers    = array();
-	$headers_list          = array(
+	$recognized_headers     = array();
+	$headers_list           = array(
 		'Content-Type' => array(),
 		'Bcc'          => array(),
 		'Cc'           => array(),
@@ -350,16 +356,16 @@ function pma_parse_headers( $headers ) {
 				$segments   = explode( ':', $header );
 				if ( count( $segments ) === 2 ) {
 					if ( array_key_exists( strtolower( $segments[0] ), $headers_list_lowercase ) ) {
-						list( $header_key, $header_val ) = $segments;
-						$header_key = strtolower( $header_key );
+						list($header_key, $header_val) = $segments;
+						$header_key                    = strtolower( $header_key );
 					}
 				}
 			} else {
 				$segments = explode( ':', $header );
 				if ( count( $segments ) === 2 ) {
 					if ( array_key_exists( strtolower( $segments[0] ), $headers_list_lowercase ) ) {
-						list( $header_key, $header_val ) = $segments;
-						$header_key = strtolower( $header_key );
+						list($header_key, $header_val) = $segments;
+						$header_key                    = strtolower( $header_key );
 					}
 				}
 			}
@@ -448,21 +454,19 @@ function pma_send_mail( $headers, $email ) {
 	} elseif ( isset( $response['response']['code'] ) ) {
 		if ( 200 === $response['response']['code'] ) {
 			return true;
-		} else {
-			if ( isset( $response['body'] ) ) {
+		} elseif ( isset( $response['body'] ) ) {
 				$error = json_decode( $response['body'], true );
-				if ( isset( $error['ErrorCode'] ) ) {
-					$error_code = $error['ErrorCode'];
-				} else {
-					$error_code = '000';
-				}
-				if ( isset( $error['Message'] ) ) {
-					$error_message = $error['Message'];
-				} else {
-					$error_message = __( 'Unknown Error', 'postmarkapp-email-integrator' );
-				}
-				return new WP_Error( $error_code, $error_message );
+			if ( isset( $error['ErrorCode'] ) ) {
+				$error_code = $error['ErrorCode'];
+			} else {
+				$error_code = '000';
 			}
+			if ( isset( $error['Message'] ) ) {
+				$error_message = $error['Message'];
+			} else {
+				$error_message = __( 'Unknown Error', 'postmarkapp-email-integrator' );
+			}
+				return new WP_Error( $error_code, $error_message );
 		}
 	}
 	return new WP_Error( 'NO_RESPONSE', __( 'No Response from the PostMark Server', 'postmarkapp-email-integrator' ) );
