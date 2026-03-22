@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<ruleset name="Postmarkapp Email Integrator Ruleset">
+	<description>Coding Rules for Postmarkapp Email Integrator project</description>
+
+	<!-- Pass some flags to PHPCS:
+		 p flag: Show progress of the run.
+		 s flag: Show sniff codes in all reports.
+		 v flag: Print verbose output.
+	-->
+	<arg value="psv"/>
+
+	<!-- Check all files in this directory and the directories below it. -->
+	<file>.</file>
+
+	<!-- Exclude index.php files kept only to prevent directory listing. -->
+	<exclude-pattern>*/index.php</exclude-pattern>
+
+	<!-- Exclude the Node Modules directory. -->
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+
+	<!-- Exclude the vendor directory. -->
+	<exclude-pattern>/vendor/*</exclude-pattern>
+
+	<!-- Exclude the Lando WordPress directory. -->
+	<exclude-pattern>/wordpress/*</exclude-pattern>
+
+	<!-- Include the WordPress standards. -->
+	<rule ref="WordPress" />
+
+	<!-- Minimum WordPress supported check. -->
+	<config name="minimum_supported_wp_version" value="5.0"/>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="pma"/>
+				<element value="postmarkapp"/>
+				<element value="POSTMARKAPP"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="postmarkapp-email-integrator"/>
+			</property>
+		</properties>
+	</rule>
+
+</ruleset>
