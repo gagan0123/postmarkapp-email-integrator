@@ -9,5 +9,8 @@ wordpress/
 .DS_Store
 Thumbs.db
 
+# Build output
+dist/
+
 # Logs
 *.log
