@@ -4,7 +4,7 @@
  * Plugin URI: https://wordpress.org/plugins/postmarkapp-email-integrator/
  * Description: Overwrites wp_mail to send emails through Postmark. This plugin is a bug fixed edition of the official Postmarkapp plugin
  * Author: Gagan Deep Singh
- * Version: 2.5
+ * Version: 2.5.0
  * Author URI: https://gagan.pro
  * Text Domain: postmarkapp-email-integrator
  * License: GPLv2 or later
@@ -92,7 +92,7 @@ function postmarkapp_admin_enqueue_scripts( $hook_suffix ) {
 		'pma-admin-js',
 		plugin_dir_url( __FILE__ ) . 'js/pma-admin.js',
 		array( 'jquery' ),
-		'2.5',
+		'2.5.0',
 		true
 	);
 	wp_localize_script(
