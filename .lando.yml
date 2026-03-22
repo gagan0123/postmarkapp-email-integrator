@@ -36,6 +36,8 @@ services:
       - wp config set AUTOMATIC_UPDATER_DISABLED true --raw
       - wp config set DISALLOW_FILE_EDIT true --raw
       - wp config set WP_ENVIRONMENT_TYPE 'local'
+      - wp config set WP_SITEURL "https://$LANDO_APP_NAME.$LANDO_DOMAIN"
+      - wp config set WP_HOME "https://$LANDO_APP_NAME.$LANDO_DOMAIN"
       - | # Install WordPress if not already installed
         if ! wp core is-installed; then
           wp core install --url=https://$LANDO_APP_NAME.$LANDO_DOMAIN \
