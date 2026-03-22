@@ -32,8 +32,8 @@ vendor/             # Third-party dependencies (do not edit)
 
 This project follows the **WordPress Coding Standards** enforced via PHPCS.
 
-- Run `phpcs` using the config in `.phpcs.xml.dist`
-- Run `phpcbf` for auto-fixable violations
+- Run `lando phpcs` to check coding standards (runs inside the Lando container)
+- Run `lando phpcbf` for auto-fixable violations (runs inside the Lando container)
 - All PHP must comply with the `WordPress` ruleset
 
 ### Naming Conventions

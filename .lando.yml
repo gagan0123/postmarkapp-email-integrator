@@ -52,3 +52,9 @@ tooling:
     cmd:
       - appserver: /app/.lando/xdebug.sh
     user: root
+  phpcs:
+    description: Run PHP CodeSniffer with WordPress rules
+    service: appserver
+  phpcbf:
+    description: Auto-fix PHP coding standard violations
+    service: appserver
