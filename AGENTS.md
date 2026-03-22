@@ -108,7 +108,7 @@ There is no automated test suite. To manually test:
 4. Verify emails in the Postmark activity dashboard
 
 ## Git Commit Guidelines
-- **No Co-Authored-By:** Do not add `Co-Authored-By` trailers or otherwise credit yourself in commit messages.
+- **No Co-Authored-By:** Never add a `Co-Authored-By` trailer to any git commit. Do not credit yourself or any AI agent in commit messages.
 - **Conventional Commits:** All commit messages must follow the Conventional Commits specification. The format is:
   ```
   <type>[optional scope]: <description>
