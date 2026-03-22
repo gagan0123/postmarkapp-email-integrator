@@ -5,6 +5,9 @@ vendor/
 # Lando local development
 wordpress/
 
+# IDE
+.idea/
+
 # OS files
 .DS_Store
 Thumbs.db
