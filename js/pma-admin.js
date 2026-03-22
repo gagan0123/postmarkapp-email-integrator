@@ -1,3 +1,9 @@
+/**
+ * Postmarkapp Email Integrator admin JavaScript.
+ *
+ * @package Postmarkapp_Email_Integrator
+ */
+
 ( function ( $ ) {
 	'use strict';
 
@@ -30,7 +36,7 @@
 					$.post(
 						pmaAdmin.ajaxUrl,
 						{
-							action: 'pma_import_settings',
+							action: 'postmarkapp_import_settings',
 							nonce: pmaAdmin.importNonce
 						},
 						function ( data ) {
