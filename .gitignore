@@ -17,3 +17,5 @@ dist/
 
 # Logs
 *.log
+/profiler-output/
+.lando.local.yml
